@@ -26,12 +26,6 @@
 */
 
 :root, body {
-  --text: #000000;
-  --background: #fcfdf7;
-  --primary: #2e7676;
-  --secondary: #b9e9e9;
-  --accent: #a33333;
-
   font-family: 'Poppins', sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -47,6 +41,7 @@
   -webkit-text-size-adjust: 100%;
 
   scrollbar-width: thin;
+  overflow-x: hidden;
 }
 
 html[data-theme="light"] {
@@ -86,7 +81,7 @@ body {
 }
 
 .text-section {
-  min-height: 80vh;
+  min-height: 90vh;
   max-width: 80vw;
   display: flex;
   place-content: center;
