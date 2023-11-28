@@ -1,6 +1,7 @@
 function Section() {
     return (
-        null
+        <section className="text-section">
+        </section>
     )
 }
 

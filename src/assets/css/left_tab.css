@@ -1,0 +1,15 @@
+#left-tab {
+    display: flex;
+    width: 10vw;
+    min-height: 90vh;
+    place-content: center;
+    place-items: center;
+    text-align: center;
+    border-right: 1px solid black;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    height: inherit;
+
+    flex-direction: column;
+}
+

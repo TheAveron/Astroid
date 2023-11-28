@@ -2,7 +2,7 @@ footer {
     position: static;
     bottom: 0;
     display: flex;
-    border-top: solid 0.003mm var(--text);
+    border-top: solid 1px var(--text);
     width: 90vw;
     padding: 2vh 5vw;
 }

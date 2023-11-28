@@ -87,6 +87,7 @@ body {
   place-content: center;
   place-items: center;
   margin: auto;
+  flex-direction: column;
 }
 
 h1 {
@@ -119,4 +120,22 @@ button:focus-visible {
 
 li {
   text-align: left;
+}
+
+main {
+  min-width: 88vw;
+}
+
+#content {
+  padding-top: max(8vh, calc(4vh + 50px));
+
+  display: flex;
+  flex-direction: row;
+
+
+  place-content: center;
+  place-items: center;
+
+  /*justify-content: space-between;*/
+  height: auto;
 }
