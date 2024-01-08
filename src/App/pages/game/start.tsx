@@ -5,8 +5,9 @@ function Play() {
   const canvasRef = useRef(null)
   
   useEffect(() => {
-    const canvas = canvasRef.current
-    const context = canvas.getContext('2d')
+    null
+    //const canvas = canvasRef.current;
+    //const context = canvas.getContext('2d');
     //Our first draw
     //context.fillStyle = '#003000'
     //context.fillRect(0, 0, context.canvas.width, context.canvas.height)

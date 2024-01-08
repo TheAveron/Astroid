@@ -12,19 +12,23 @@ function Header() {
     )
 }
 
-function panel_click () {
+function panel_click() {
     const button = document.getElementById("left-tab");
+    const content = document.getElementById("content");
 
-    if (button.style.display == "none") {
-        button.style.display="flex";
-        document.getElementById("content").style.display="flex";
-        document.getElementById("content").style.paddingRight = document.getElementById("content")?.style.paddingTop
+    if ((button != null) && (content != null)) {
+        if (button.style.display == "none") {
+            button.style.display = "flex";
+            content.style.display = "flex";
+            content.style.paddingRight = content?.style.paddingTop
+        }
+        else {
+            button.style.display = "none";
+            content.style.display = "block";
+            content.style.paddingRight = "0";
+        }
     }
-    else {
-        button.style.display="none";
-        document.getElementById("content").style.display="block";
-        document.getElementById("content").style.paddingRight=0;
-    }
+
 
 }
 
