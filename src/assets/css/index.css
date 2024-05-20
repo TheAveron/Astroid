@@ -50,6 +50,8 @@ html[data-theme="light"] {
   --primary: #2e7676;
   --secondary: #b9e9e9;
   --accent: #a33333;
+
+  --menu-src: "images/light/menu.png"
 }
 
 html[data-theme="dark"] {
@@ -58,6 +60,8 @@ html[data-theme="dark"] {
   --primary: #89d1d1;
   --secondary: #164646;
   --accent: #cc5c5c;
+
+  --menu-src: "images/dark/menu.png"
 }
 
 a {

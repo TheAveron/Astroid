@@ -5,9 +5,16 @@ import ThemeChoice from "../../utils/theme"
 function Header() {
     return (
         <header>
-            <div className="title"><Link to={"/Astroid"}>Astroid</Link></div>
-            <button className="button" onClick={panel_click}><p>Click me</p></button>
-            <nav className="navbar"><Link to={"play"}>Play</Link><Link to={"credit"}>Credit</Link><ThemeChoice /></nav>
+            <div className="left-infos">
+                <div id="left-bar-button" onClick={panel_click}><img id="left-bar-img" /></div>
+                <div className="title"><Link to={"/Astroid"}>Astroid</Link></div>
+            </div>
+            <nav className="navbar">
+                <Link to={"play"}>Play</Link>
+                <Link to={"dashboard"}>Dashboard</Link>
+                <Link to={"credit"}>Credit</Link>
+                <ThemeChoice />
+            </nav>
         </header>
     )
 }
@@ -28,8 +35,6 @@ function panel_click() {
             content.style.paddingRight = "0";
         }
     }
-
-
 }
 
 export default Header

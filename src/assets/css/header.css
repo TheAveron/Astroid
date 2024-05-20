@@ -33,3 +33,24 @@ header .title a {
     font-weight: 500;
     font-size: larger;
 }
+
+.left-infos {
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+    column-gap: 2em;
+}
+
+#left-bar-button {
+    background: none;
+    padding: 0;
+    place-items: center;
+    padding: 3px;
+    display: flex;
+}
+
+#left-bar-img {
+    content: var(--menu-src);
+    margin: 0;
+    size: 100px;
+}
