@@ -1,5 +1,5 @@
 function Credit() {
-    return(
+    return (
         <section className="text-section first-element">
             <h2>Icons</h2>
             <h2>Images</h2>

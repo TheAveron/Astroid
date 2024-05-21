@@ -11,14 +11,12 @@ function Layout() {
             <div id="content">
                 <Left_bar />
                 <main>
-                    <Outlet/>
+                    <Outlet />
                 </main>
             </div>
             <Footer />
         </>
     );
 }
-  
+
 export default Layout;
-  
-      

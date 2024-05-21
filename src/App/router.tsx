@@ -7,16 +7,16 @@ import Dashboard from "./pages/dashboard";
 
 export default function App() {
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path='/Astroid' element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="credit" element={<Credit />} />
+        <BrowserRouter>
+            <Routes>
+                <Route path='/Astroid' element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="credit" element={<Credit />} />
 
-          </Route>
-          <Route path="/Astroid/play" element={<Game />}/>
-        </Routes>
-      </BrowserRouter>
+                </Route>
+                <Route path="/Astroid/play" element={<Game />} />
+            </Routes>
+        </BrowserRouter>
     );
-  }
+}
