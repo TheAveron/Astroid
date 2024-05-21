@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import GetLocation from '../common/location';
 import { fetchWeatherApi } from 'openmeteo'; // Adjust import based on the actual module structure
+import { WeatherApiResponse } from '@openmeteo/sdk/weather-api-response';
 
 interface Current {
 	time: Date,
@@ -46,7 +47,8 @@ function Weather() {
 
         const fetchData = async () => {
             try {
-                const response = await fetchWeatherApi(url, params, 0);
+                const response = await fetchWeatherApi(url, params, 3);
+                console.log(response)
                 const weatherData = processWeatherResponse(response[0]); // Assuming this is part of the module
                 setContent(
                     <div className='Weather-box'>
@@ -75,26 +77,31 @@ function Weather() {
 }
 
 // Assuming processWeatherResponse is a helper function that processes the response from the weather API
-function processWeatherResponse(response: any): WeatherData {
-    const utcOffsetSeconds = response.utcOffsetSeconds;
-    const current = response.current;
-    const hourly = response.hourly;
+function processWeatherResponse(response: WeatherApiResponse): WeatherData {
+    const range = (start: number, stop: number, step: number) =>
+        Array.from({ length: (stop - start) / step }, (_, i) => start + i * step);
+
+    const utcOffsetSeconds = response.utcOffsetSeconds();
+    const current = response.current()!;
+    const hourly = response.hourly()!;
 
     const weatherData: WeatherData = {
         current: {
-            time: new Date((Number(current.time) + utcOffsetSeconds) * 1000),
-            temperature2m: current.variables[0].value,
-            relativeHumidity2m: current.variables[1].value,
-            precipitation: current.variables[2].value,
-            surfacePressure: current.variables[3].value,
+            time: new Date((Number(current.time()) + utcOffsetSeconds) * 1000),
+            temperature2m: current.variables(0)!.value(),
+            relativeHumidity2m: current.variables(1)!.value(),
+            precipitation: current.variables(2)!.value(),
+            surfacePressure: current.variables(3)!.value(),
         },
         hourly: {
-            time: hourly.time.map((t: number) => new Date((t + utcOffsetSeconds) * 1000)),
-            temperature2m: hourly.variables[0].valuesArray,
-            relativeHumidity2m: hourly.variables[1].valuesArray,
-            precipitationProbability: hourly.variables[2].valuesArray,
-            surfacePressure: hourly.variables[3].valuesArray,
-            uvIndex: hourly.variables[4].valuesArray,
+            time: range(Number(hourly.time()), Number(hourly.timeEnd()), hourly.interval()).map(
+                (t) => new Date((t + utcOffsetSeconds) * 1000)
+            ),
+            temperature2m: hourly.variables(0)!.valuesArray()!,
+            relativeHumidity2m: hourly.variables(1)!.valuesArray()!,
+            precipitationProbability: hourly.variables(2)!.valuesArray()!,
+            surfacePressure: hourly.variables(3)!.valuesArray()!,
+            uvIndex: hourly.variables(4)!.valuesArray()!,
         }
     };
 
