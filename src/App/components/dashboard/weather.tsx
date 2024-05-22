@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import GetLocation from "../common/location";
 import { fetchWeatherApi } from "openmeteo"; // Adjust import based on the actual module structure
 import { WeatherApiResponse } from "@openmeteo/sdk/weather-api-response";
-import "../../../assets/css/weather.css";
+import "../../../assets/css/dashboard.css";
 
 interface Current {
     time: Date;
@@ -58,14 +58,14 @@ function Weather() {
 
         const fetchData = async () => {
             try {
-                const response = await fetchWeatherApi(url, params, 3);
-                console.log(response);
+                const response = await fetchWeatherApi(url, params, 1);
                 const weatherData = processWeatherResponse(response[0]); // Assuming this is part of the module
                 setContent(
-                    <div className="Weather-box">
-                        <h3>
-                            Place: Paris | Current Time: {weatherData.current.time.getHours()}
-                        </h3>
+                    <div className="weather-box">
+                        <h2>
+                            Météo | {weatherData.current.time.getHours()}h {weatherData.current.time.getMinutes()}min
+                        </h2>
+                        <h3>Place: Paris</h3>
                         <ul>
                             <li>
                                 Temperature: {weatherData.current.temperature2m.toPrecision(3)}{" "}
@@ -76,7 +76,7 @@ function Weather() {
                                 {weatherData.current.relativeHumidity2m.toPrecision(3)} %
                             </li>
                             <li>
-                                Pressure: {weatherData.current.surfacePressure.toPrecision(3)}{" "}
+                                Pressure: {weatherData.current.surfacePressure.toPrecision(4)}{" "}
                                 hPa
                             </li>
                         </ul>
@@ -92,7 +92,7 @@ function Weather() {
     }, [url, location]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="weather-box">Loading...</div>;
     }
 
     return <>{content}</>;
@@ -103,13 +103,12 @@ function processWeatherResponse(response: WeatherApiResponse): WeatherData {
     const range = (start: number, stop: number, step: number) =>
         Array.from({ length: (stop - start) / step }, (_, i) => start + i * step);
 
-    const utcOffsetSeconds = response.utcOffsetSeconds();
     const current = response.current()!;
     const hourly = response.hourly()!;
 
     const weatherData: WeatherData = {
         current: {
-            time: new Date((Number(current.time()) + utcOffsetSeconds) * 1000),
+            time: new Date(Number(current.time()) * 1000),
             temperature2m: current.variables(0)!.value(),
             relativeHumidity2m: current.variables(1)!.value(),
             precipitation: current.variables(2)!.value(),
@@ -120,7 +119,7 @@ function processWeatherResponse(response: WeatherApiResponse): WeatherData {
                 Number(hourly.time()),
                 Number(hourly.timeEnd()),
                 hourly.interval()
-            ).map((t) => new Date((t + utcOffsetSeconds) * 1000)),
+            ).map((t) => new Date(t * 1000)),
             temperature2m: hourly.variables(0)!.valuesArray()!,
             relativeHumidity2m: hourly.variables(1)!.valuesArray()!,
             precipitationProbability: hourly.variables(2)!.valuesArray()!,

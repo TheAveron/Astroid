@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom"
 import "../../../assets/css/header.css"
 import ThemeChoice from "../../utils/theme"
+import ChooseImage from "../../utils/imagetheme";
 
 function Header() {
     return (
         <header>
             <div className="left-infos">
-                <div id="left-bar-button" onClick={panel_click}><img id="left-bar-img" /></div>
+                <div id="left-bar-button" onClick={panel_click} style={{backgroundImage: ChooseImage("menu.png")}}></div>
                 <div className="title"><Link to={"/Astroid"}>Astroid</Link></div>
             </div>
             <nav className="navbar">

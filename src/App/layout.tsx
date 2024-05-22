@@ -8,12 +8,12 @@ function Layout() {
     return (
         <>
             <Header />
-            <div id="content">
+            <main>
                 <Left_bar />
-                <main>
+                <div id="content">
                     <Outlet />
-                </main>
-            </div>
+                </div>
+            </main>
             <Footer />
         </>
     );

@@ -1,0 +1,40 @@
+.dashboard {
+    margin-left:auto;
+    margin-right: auto;
+    display: grid;
+
+    padding: 5vh;
+
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    column-gap: 2vw;
+    row-gap: 2vh;
+
+    max-height: 100vh;
+}
+
+.weather-box {
+    padding: 2vh 2vw;
+    border: 1px solid black;
+    border-radius: 20px;
+
+    grid-column: 4;
+    grid-row: 1;
+
+    background-color: var(--secondary);
+
+    max-height: min-content;
+}
+
+.apod-box {
+    padding:  2vh 2vw;
+    border: 1px solid black;
+    border-radius: 20px;
+
+    grid-column: 1/ 4;
+    grid-row: 1 / span 2;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+}
