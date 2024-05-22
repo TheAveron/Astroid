@@ -31,7 +31,7 @@ html[data-theme="light"] {
   --secondary: #b9e9e9;
   --accent: #a33333;
 
-  --menu-src: "images/light/menu.png"
+  --menu-src: url("images/light/menu.png")
 }
 
 html[data-theme="dark"] {
@@ -41,7 +41,7 @@ html[data-theme="dark"] {
   --secondary: #164646;
   --accent: #cc5c5c;
 
-  --menu-src: "images/dark/menu.png"
+  --menu-src: url("images/dark/menu.png")
 }
 
 body {
@@ -58,6 +58,7 @@ main {
   display: grid;
 
   grid-template-columns:repeat(1fr, 10);
+  padding-top: max(8vh, calc(4vh + 50px));
 }
 
 .logo {

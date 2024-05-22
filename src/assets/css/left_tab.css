@@ -14,3 +14,9 @@
     grid-column: 1;
 }
 
+#left-bar-button {
+    background:blueviolet;
+    background-image: var(--menu-src);
+    width: 20px;
+    height: 20px
+}

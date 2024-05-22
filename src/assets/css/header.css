@@ -41,14 +41,6 @@ header .title a {
     column-gap: 2em;
 }
 
-#left-bar-button {
-    background: none;
-    padding: 0;
-    place-items: center;
-    padding: 3px;
-    display: flex;
-}
-
 #left-bar-img {
     content: var(--menu-src);
     margin: 0;
